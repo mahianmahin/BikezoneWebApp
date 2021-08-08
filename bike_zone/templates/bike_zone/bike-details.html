@@ -1,0 +1,104 @@
+{% extends 'bike_zone/base.html' %}
+{% load static %}
+
+{% block title %} {{bikes.bike_name}} - Bike Details | BikeZone {% endblock title %}
+
+{% block content %}
+        <header class="notIndex">
+            {% include 'bike_zone/navbar.html' %}
+
+            <!-- ================================= Hero section =========================-->
+
+            <!-- =============================== Scroll to top button section ===================== -->
+
+            <div class="scroll-to-top d-flex justify-content-center align-items-center shadow" id="sct">
+                <i class="fas fa-chevron-up"></i>
+            </div>
+
+            <!-- =============================== Scroll to top button section ===================== -->
+        
+
+            <div class="container hero-section">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 hero-txt-section-header text-white d-flex justify-content-center">
+                        <h1 style="font-weight: bold; font-size: 30px; text-align: center">{{bikes.bike_name}}</h1><br>
+                    </div>
+
+            <!-- ================================= Hero section =========================-->
+        </header>
+
+        <div class="container">
+            <section class="details-section d-flex flex-row flex-wrap justify-content-center mt-5">
+                <div class="col-sm-7 details-block px-2 my-3">
+                    <div class="bike-name-price d-flex flex-row justify-content-between flex-wrap">
+                        <div class="bike-name">
+                            {{bikes.bike_name}}<br> 
+                            <span><i class="fas fa-map-marker-alt"></i>&nbsp;{{bikes.bike_location}}</span>
+                        </div>
+                        <div class="bike-price">
+                            $&nbsp;{{bikes.bike_price}}
+                        </div>
+                    </div>
+                    <div class="bike-image mt-3">
+                        <img src="{{bikes.bike_picture.url}}" class="img-fluid">
+                    </div>
+                    <div class="bike-description mt-3">
+                        <h4 class="my-5">Description</h4>
+                        {{bikes.bike_description | safe }}
+                    </div>
+                </div>
+
+                <div class="col-sm-5 features-block px-5 py-5 mx-3 my-3 shadow">
+                    <h4>Refine Your Search</h4>
+                    <div class="features-list d-flex flex-column mt-5">
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Eigine Type :</span>
+                            <span>{{bikes.bike_engine_type}}</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Engine Displacement :</span>
+                            <span>{{bikes.bike_engine_displacement}} CC</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Max Power :</span>
+                            <span>{{bikes.bike_max_power}}</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Emission Type :</span>
+                            <span>{{bikes.bike_emission_type}}</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Max Torque :</span>
+                            <span>{{bikes.bike_max_torque}}</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Stroke :</span>
+                            <span>{{bikes.bike_stroke}} mm</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>No of Cylinders :</span>
+                            <span>{{bikes.bike_no_of_cylinders}}</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Valve per Cylinder :</span>
+                            <span>{{bikes.bike_valve_per_cylinder}}</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Fuel Type :</span>
+                            <span>{{bikes.bike_fuel_type}}</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Compression Ratio :</span>
+                            <span>{{bikes.bike_compression_ratio}}</span>
+                        </div>
+                        <div class="feature-item d-flex flex-row justify-content-between my-2 py-2">
+                            <span>Ignition :</span>
+                            <span>{{bikes.bike_ignition}}</span>
+                        </div>
+                    </div>
+                    <a href="{% url 'add_to_cart' bikes.id %}"><button class="btn btn-dark"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Add to Cart</button></a>
+                </div>
+            </section>
+        </div>
+
+{% endblock content %}
